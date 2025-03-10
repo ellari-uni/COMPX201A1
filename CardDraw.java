@@ -1,10 +1,10 @@
-public class Main {
+public class CardDraw {
     public static void main(String[] args){        
-
-        
+        /*
         CardLinkedList ll = new CardLinkedList();
         //Place all tests for the class methods in a separate method to ensure the test code is saved when I create part 2
         TestingMethods(ll);
+        */
     }
     /**
      * Storage of tests for all LinkedList methods
