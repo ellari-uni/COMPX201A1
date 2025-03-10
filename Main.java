@@ -16,7 +16,16 @@ public class Main {
         System.out.println("Equivalence check: card 1 and card 5: "+ card.equals(card5));
         //Testing non-Card inputs
         System.out.println("Equivalence check: card 1 and card 5: "+ card.equals("Test"));
+        System.out.println();
+        CardLinkedList ll = new CardLinkedList();
+        ll.add(card);
+        ll.add(card2);
+        ll.add(card3);
+        ll.add(card4);
+        ll.add(card5);
+        ll.print();
 
-
+        ll.remove(new Card(Card.Suits.Spades, 5));
+        ll.print();
     }
 }

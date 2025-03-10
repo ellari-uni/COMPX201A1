@@ -26,6 +26,10 @@ public class Card {
         System.out.print(outString);
     }
 
+    public String toString(){
+        return number + " of " + suit;
+    }
+
     public boolean equals(Object o){
         if (!(o instanceof Card)) {
             return false;
