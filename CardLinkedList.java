@@ -70,4 +70,25 @@ public class CardLinkedList {
         }
         return false;
     }
+
+    public Card getCardAt(int index){
+        try {
+            if(index > getLength() -1) {
+                throw new Exception("index must be within the bounds of the list");
+            }
+            else{
+                Node current = head;
+                for (int i = 0; i<=index; i++){
+                    System.out.println(i + " " + index);
+                    if(i == index) return current.card;
+                    current = current.next;
+                }
+                return null;
+            }
+        }
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
 }
