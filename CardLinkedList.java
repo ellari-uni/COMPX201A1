@@ -1,3 +1,5 @@
+
+
 public class CardLinkedList {
     Node head;
     /**
@@ -108,7 +110,6 @@ public class CardLinkedList {
                 //iterate until index is reached, then get given card
                 Node current = head;
                 for (int i = 0; i<=index; i++){
-                    System.out.println(i + " " + index);
                     if(i == index) return current.card;
                     current = current.next;
                 }

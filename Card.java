@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Card {
     /**
      * Enum to avoid invalid values
@@ -8,6 +10,14 @@ public class Card {
         Diamonds,
         Clubs
     }
+    public static Suits randomSuit(){
+        Random rand = new Random();
+        Suits[] suits = Suits.values();
+        System.out.println("reached");
+        System.out.println(suits[rand.nextInt(suits.length - 1)]);
+        return suits[rand.nextInt(suits.length - 1)];
+    }
+
     private int number = 0;
     private Suits suit = null;
     /**
