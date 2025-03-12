@@ -18,9 +18,10 @@ public class CardLinkedList {
         Card getCard = null;
         do {
             getCard = new Card(getRandomSuit(), rand.nextInt(14));
+            
             fulfilled = hasCard(getCard);
         }while (!fulfilled);
-        
+        //getCard.print();
         return getCard;
     }
     /**
@@ -70,7 +71,7 @@ public class CardLinkedList {
                     current = current.next;
                 }
             }
-            System.out.println("Successfully removed " + card + " from linked list");
+            //System.out.println("Successfully removed " + card + " from linked list");
             return card;
         }
         return null;
