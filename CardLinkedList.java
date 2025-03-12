@@ -1,3 +1,4 @@
+import java.util.Random;
 public class CardLinkedList {
     Node head;
     /**
@@ -6,7 +7,22 @@ public class CardLinkedList {
     public CardLinkedList(){
         head = null;
     }
+    public Card.Suits getRandomSuit(){
+        Random rand = new Random();
+        return Card.Suits.values()[rand.nextInt(Card.Suits.values().length - 1)];
+    }
 
+    public Card getRandomCard(){
+        boolean fulfilled = false;
+        Random rand = new Random();
+        Card getCard = null;
+        do {
+            getCard = new Card(getRandomSuit(), rand.nextInt(14));
+            fulfilled = hasCard(getCard);
+        }while (!fulfilled);
+        
+        return getCard;
+    }
     /**
      * print out all values in the list, starting with head
      */
@@ -33,7 +49,7 @@ public class CardLinkedList {
      * Take the first occurence from a particular card off the stack
      * @param card card to remove
      */
-    public void remove(Card card){
+    public Card remove(Card card){
         if (!hasCard(card)) System.out.println("List does not contain this card");
         else{
             //Need current and previous so that the rest of the list doesn't get lost
@@ -55,7 +71,9 @@ public class CardLinkedList {
                 }
             }
             System.out.println("Successfully removed " + card + " from linked list");
+            return card;
         }
+        return null;
     }
     /**
      * Check whether the list is empty by comparing the head to null

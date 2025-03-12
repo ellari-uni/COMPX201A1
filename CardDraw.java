@@ -1,5 +1,8 @@
+import java.util.Random;
 public class CardDraw {
     public static void main(String[] args){        
+        Random rand = new Random();
+
         CardLinkedList deck = new CardLinkedList();
         for (Card.Suits suit : Card.Suits.values()){
             for (int i = 1; i <= 13; i++){
@@ -8,6 +11,19 @@ public class CardDraw {
         }
         deck.print();
         System.out.println(deck.getLength());
+
+        CardLinkedList[] hands = new CardLinkedList[10];
+        for (int i = 0; i < 10; i++){
+            hands[i] = new CardLinkedList();
+            for (int j = 0; j < 5; j++){
+                hands[i].add(deck.remove(deck.getRandomCard()));
+                System.out.println(deck.getLength());
+            }
+            hands[i].print();
+            System.out.println("Hand no: " + i);
+        }
+        System.out.println("Test");
+        
         
         /*
         CardLinkedList ll = new CardLinkedList();
