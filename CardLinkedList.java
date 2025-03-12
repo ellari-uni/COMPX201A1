@@ -12,18 +12,6 @@ public class CardLinkedList {
         return Card.Suits.values()[rand.nextInt(Card.Suits.values().length - 1)];
     }
 
-    public Card getRandomCard(){
-        boolean fulfilled = false;
-        Random rand = new Random();
-        Card getCard = null;
-        do {
-            getCard = new Card(getRandomSuit(), rand.nextInt(14));
-            
-            fulfilled = hasCard(getCard);
-        }while (!fulfilled);
-        //getCard.print();
-        return getCard;
-    }
     /**
      * print out all values in the list, starting with head
      */

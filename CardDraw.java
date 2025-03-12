@@ -12,17 +12,7 @@ public class CardDraw {
         deck.print();
         System.out.println(deck.getLength());
 
-        CardLinkedList[] hands = new CardLinkedList[10];
-        for (int i = 0; i < 10; i++){
-            hands[i] = new CardLinkedList();
-            for (int j = 0; j < 5; j++){
-                hands[i].add(deck.remove(deck.getRandomCard()));
-                //System.out.println(deck.getLength());
-            }
-            hands[i].print();
-            System.out.println("Hand no: " + i);
-        }
-        System.out.println("Test");
+        
         
         
         /*
