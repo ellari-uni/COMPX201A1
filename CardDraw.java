@@ -11,9 +11,32 @@ public class CardDraw {
         }
         deck.print();
         System.out.println(deck.getLength());
-
+        
+        /*CardLinkedList[] playerHands = {
+            new CardLinkedList(),
+            new CardLinkedList(),
+            new CardLinkedList(),
+            new CardLinkedList(),
+            new CardLinkedList(),
+            new CardLinkedList(),
+            new CardLinkedList(),
+            new CardLinkedList(),
+            new CardLinkedList(),
+            new CardLinkedList(),
+        };*/
+        CardLinkedList[] playerHands = new CardLinkedList[10];
+        for (int i = 0; i < playerHands.length - 1; i++){
+            playerHands[i] = new CardLinkedList();
+        }
         
         
+        for(int i = 0; i < playerHands.length - 1; i++){
+            for(int j = 0; j < 5; j++) playerHands[i].add(deck.getRandomCard());
+            
+            playerHands[i].print();
+        }
+        
+        System.out.println("Reached");
         /*
         CardLinkedList ll = new CardLinkedList();
         //Place all tests for the class methods in a separate method to ensure the test code is saved when I create part 2
