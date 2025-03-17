@@ -1,7 +1,5 @@
-import java.util.Random;
 public class CardDraw {
     public static void main(String[] args){        
-        Random rand = new Random();
 
         CardLinkedList deck = new CardLinkedList();
         for (Card.Suits suit : Card.Suits.values()){
@@ -9,42 +7,18 @@ public class CardDraw {
                 deck.add(new Card(suit, i));
             }
         }
-        deck.print();
-        System.out.println(deck.getLength());
-        
-        /*CardLinkedList[] playerHands = {
-            new CardLinkedList(),
-            new CardLinkedList(),
-            new CardLinkedList(),
-            new CardLinkedList(),
-            new CardLinkedList(),
-            new CardLinkedList(),
-            new CardLinkedList(),
-            new CardLinkedList(),
-            new CardLinkedList(),
-            new CardLinkedList(),
-        };*/
+
         CardLinkedList[] playerHands = new CardLinkedList[10];
-        for (int i = 0; i < playerHands.length - 1; i++){
+        for (int i = 0; i < playerHands.length; i++){
             playerHands[i] = new CardLinkedList();
         }
-        
-        
-        for(int i = 0; i < playerHands.length - 1; i++){
+        for(int i = 0; i < playerHands.length; i++){
             for(int j = 0; j < 5; j++) playerHands[i].add(deck.getRandomCard());
-            
-            playerHands[i].print();
         }
-        
-        System.out.println("Reached");
-        /*
-        CardLinkedList ll = new CardLinkedList();
-        //Place all tests for the class methods in a separate method to ensure the test code is saved when I create part 2
-        TestingMethods(ll);
-        */
     }
     /**
      * Storage of tests for all LinkedList methods
+     * ** Part One of assignment**
      * @param ll Linked List to test
      */
     private static void TestingMethods(CardLinkedList ll){
@@ -94,5 +68,15 @@ public class CardDraw {
         ll.print();
         ll.remove(card4);
         ll.print();
+    }
+    /**
+     * Method used for debugging the player hands
+     * @param lla Array of Linked Lists (player hands)
+     */
+    private static void printAllHands(CardLinkedList[] lla){
+        for(CardLinkedList hand : lla){
+            hand.print();
+            System.out.println();
+        }
     }
 }

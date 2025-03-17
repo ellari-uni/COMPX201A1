@@ -12,6 +12,11 @@ public class CardLinkedList {
         return Card.Suits.values()[rand.nextInt(Card.Suits.values().length - 1)];
     }
 
+    public Card getRandomCard(){
+        Random rand = new Random();
+        return remove(getCardAt(rand.nextInt(getLength()-1)));
+    }
+
     /**
      * print out all values in the list, starting with head
      */
@@ -47,8 +52,13 @@ public class CardLinkedList {
             
             //Iterate through cards in list until there is a match, then remove it by updating the head/previous
             while (current != null){
+                print();
+                System.out.println("^^^^^ CURRENT DECK");
                 if(current.card.equals(card)){
-                    if(previous == null) head = current.next;
+                    if(previous == null) {
+                        head = current.next;
+                        break;
+                    }
                     else{
                         previous.next = current.next;
                         break;
