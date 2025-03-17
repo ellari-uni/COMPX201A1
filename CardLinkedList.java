@@ -52,8 +52,6 @@ public class CardLinkedList {
             
             //Iterate through cards in list until there is a match, then remove it by updating the head/previous
             while (current != null){
-                print();
-                System.out.println("^^^^^ CURRENT DECK");
                 if(current.card.equals(card)){
                     if(previous == null) {
                         head = current.next;
@@ -125,7 +123,6 @@ public class CardLinkedList {
                 //iterate until index is reached, then get given card
                 Node current = head;
                 for (int i = 0; i<=index; i++){
-                    System.out.println(i + " " + index);
                     if(i == index) return current.card;
                     current = current.next;
                 }

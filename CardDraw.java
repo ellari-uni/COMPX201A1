@@ -7,7 +7,6 @@ public class CardDraw {
                 deck.add(new Card(suit, i));
             }
         }
-
         CardLinkedList[] playerHands = new CardLinkedList[10];
         for (int i = 0; i < playerHands.length; i++){
             playerHands[i] = new CardLinkedList();
@@ -15,6 +14,8 @@ public class CardDraw {
         for(int i = 0; i < playerHands.length; i++){
             for(int j = 0; j < 5; j++) playerHands[i].add(deck.getRandomCard());
         }
+
+        System.out.println("Populated Player Hands *** Remove once full implementation");
     }
     /**
      * Storage of tests for all LinkedList methods
