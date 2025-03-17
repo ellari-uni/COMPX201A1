@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class CardDraw {
     public static void main(String[] args){        
 
@@ -16,6 +17,11 @@ public class CardDraw {
         }
 
         System.out.println("Populated Player Hands *** Remove once full implementation");
+
+        System.out.println("Testing Scoring of Hands: \n");
+        playerHands[0].print();
+        System.out.println(scoreHand(playerHands[0]));
+        
     }
     /**
      * Storage of tests for all LinkedList methods
@@ -79,5 +85,67 @@ public class CardDraw {
             hand.print();
             System.out.println();
         }
+    }
+
+    private static int scoreHand(CardLinkedList hand){
+        int score = 0;
+        int[] values = new int[hand.getLength()];
+        for(int i = 0; i<values.length;i++){
+            values[i] = hand.getCardAt(i).getNumber();
+        }
+        Arrays.sort(values);
+        int counter = 1;
+        
+        for (int i = 0; i < values.length+1; i++){
+            if(i==0) continue;
+            if (i == values.length){
+                switch(counter){
+                    case 1:
+                        System.out.println("Adding Score 1");
+                        score += values[i-1];
+                        break;
+                    case 2:
+                        System.out.println("Adding Score 2");
+                        score += (values[i-1] * 10);
+                        break;
+                    case 3:
+                        System.out.println("Adding Score 3");
+                        score += (values[i-1] *100);
+                        break;
+                    case 4:
+                        System.out.println("Adding Score 4");
+                        score += (values[i-1] * 1000);
+                        break;
+                }
+                counter = 1;
+            }
+            else if(values[i-1] == values[i]){
+                counter++;
+            }
+            else{
+                switch(counter){
+                    case 1:
+                        System.out.println("Adding Score 1");
+                        score += values[i-1];
+                        break;
+                    case 2:
+                        System.out.println("Adding Score 2");
+                        score += (values[i-1] * 10);
+                        break;
+                    case 3:
+                        System.out.println("Adding Score 3");
+                        score += (values[i-1] *100);
+                        break;
+                    case 4:
+                        System.out.println("Adding Score 4");
+                        score += (values[i-1] * 1000);
+                        break;
+                }
+                counter = 1;
+            }
+        }
+
+        System.out.println();
+        return score;
     }
 }
