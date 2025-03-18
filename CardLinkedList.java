@@ -1,42 +1,67 @@
 import java.util.Random;
 public class CardLinkedList {
+    
     Node head;
+    
     /**
      * Create a new Linked List, initialising head to null
      */
     public CardLinkedList(){
+
         head = null;
-    }
-    public Card.Suits getRandomSuit(){
-        Random rand = new Random();
-        return Card.Suits.values()[rand.nextInt(Card.Suits.values().length - 1)];
+
     }
 
-    public Card getRandomCard(){
+    /**
+     * Get a random suit from the enum of suits
+     * @return a Suit from enum
+     */
+    public Card.Suits getRandomSuit(){
         Random rand = new Random();
+
+        //Convert all suits to array, get a random index and use it for the return
+        return Card.Suits.values()[rand.nextInt(Card.Suits.values().length - 1)];
+
+    }
+
+    /**
+     * Gets and removes a random card from the LL 
+     * @return The card that was chosen
+     */
+    public Card getRandomCard(){
+
+        Random rand = new Random();
+        //Remove a card from a random index in the list
         return remove(getCardAt(rand.nextInt(getLength()-1)));
+
     }
 
     /**
      * print out all values in the list, starting with head
      */
     public void print(){
+
         Node current = head;
         
         while (current != null){
             System.out.print(current.card + " -> ");
             current = current.next;
         }
+
         System.out.println();
+
     }
+
     /**
      * Add a card to the LinkedList (in stack form)
      * @param card
      */
     public void add (Card card){
+
         Node newNode = new Node(card);
         newNode.next = head;
         head = newNode;
+
     }
 
     /**
@@ -67,9 +92,9 @@ public class CardLinkedList {
                     current = current.next;
                 }
             }
-            //System.out.println("Successfully removed " + card + " from linked list");
             return card;
         }
+        //Not reachable code, but java compiler throws an error if removed for some reason
         return null;
     }
     /**
