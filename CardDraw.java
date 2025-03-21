@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Collections;
 public class CardDraw {
     public static void main(String[] args){        
-
+        
         //Populate the deck with all card possibilities
         CardLinkedList deck = new CardLinkedList();
         //For every suit, add a card 1-13
@@ -51,6 +51,7 @@ public class CardDraw {
             }
         }
         System.out.println("The Winner is Player " + greatestPlayer + " with a score of " + greatest);
+        
     }
     /**
      * Storage of tests for all LinkedList methods
@@ -136,6 +137,8 @@ public class CardDraw {
         
         Integer counter = 1;
         
+        //Store the greatest value, will be updated as new scores are calculated
+        Integer greatest = 0;
         //For length of the list (+1 as we are checking backwards)
         for (int i = 0; i < values.length+1; i++){
             //If its the first iteration (e.g. if there is no i-1), skip this iteration
@@ -146,19 +149,23 @@ public class CardDraw {
                 switch(counter){
                     case 1:
                         //System.out.println("Adding Score 1");
-                        score += values[i-1];
+                        //score += values[i-1];
+                        if (values[i-1] > greatest) greatest = values[i-1];
                         break;
                     case 2:
                         //System.out.println("Adding Score 2");
-                        score += (values[i-1] * 10);
+                        //score += (values[i-1] * 10);
+                        if ((values[i-1]*10) > greatest) greatest = values[i-1]*10;
                         break;
                     case 3:
                         //System.out.println("Adding Score 3");
-                        score += (values[i-1] *100);
+                        //score += (values[i-1] *100);
+                        if ((values[i-1]*100) > greatest) greatest = values[i-1]*100;
                         break;
                     case 4:
                         //System.out.println("Adding Score 4");
-                        score += (values[i-1] * 1000);
+                        //score += (values[i-1] * 1000);
+                        if ((values[i-1]*1000) > greatest) greatest = values[i-1]*1000;
                         break;
                 }
                 //Set the counter to 1 to ensure it begins iterating correctly at next iteration
@@ -174,24 +181,29 @@ public class CardDraw {
                 switch(counter){
                     case 1:
                         //System.out.println("Adding Score 1");
-                        score += values[i-1];
+                        //score += values[i-1];
+                        if (values[i-1] > greatest) greatest = values[i-1];
                         break;
                     case 2:
                         //System.out.println("Adding Score 2");
-                        score += (values[i-1] * 10);
+                        //score += (values[i-1] * 10);
+                        if ((values[i-1]*10) > greatest) greatest = values[i-1]*10;
                         break;
                     case 3:
                         //System.out.println("Adding Score 3");
-                        score += (values[i-1] *100);
+                        //score += (values[i-1] *100);
+                        if ((values[i-1]*100) > greatest) greatest = values[i-1]*100;
                         break;
                     case 4:
                         //System.out.println("Adding Score 4");
-                        score += (values[i-1] * 1000);
+                        //score += (values[i-1] * 1000);
+                        if ((values[i-1]*1000) > greatest) greatest = values[i-1]*1000;
                         break;
                 }
                 counter = 1;
             }
         }
+        score += greatest;
         return score;
     }
 }
