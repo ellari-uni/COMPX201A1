@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Collections;
 public class CardDraw {
     public static void main(String[] args){        
         
@@ -31,7 +30,7 @@ public class CardDraw {
                 playerHands[i].add(deck.getRandomCard());
             }
         }
-        Integer[][] scoring = new Integer[10][2];
+        int[][] scoring = new int[10][2];
         //Score every player's hand, and display the hand & the score
         for(int i = 1; i <= playerHands.length; i++){
             scoring[i-1][0] = i;
@@ -42,8 +41,8 @@ public class CardDraw {
 
             System.out.println();
         }
-        Integer greatest = 0;
-        Integer greatestPlayer = 0;
+        int greatest = 0;
+        int greatestPlayer = 0;
         for(int i = 0; i < scoring.length;i++){
             if(scoring[i][1] > greatest) {
                 greatest = scoring[i][1];
@@ -119,26 +118,26 @@ public class CardDraw {
     /**
      * Score a given hand
      * @param hand Hand to be scored
-     * @return Score of the hand as an Integereger
+     * @return Score of the hand as an integer
      */
-    private static Integer scoreHand(CardLinkedList hand){
+    private static int scoreHand(CardLinkedList hand){
 
-        Integer score = 0;
+        int score = 0;
         
         //Variable length, to ensure possibility of larger hand sizes
-        Integer[] values = new Integer[hand.getLength()];
+        int[] values = new int[hand.getLength()];
         
-        //Format all number values as an Integereger array - as scoring doesn't rely on suits and it makes it easier to read
+        //Format all number values as an integer array - as scoring doesn't rely on suits and it makes it easier to read
         for(int i = 0; i<values.length;i++){
             values[i] = hand.getCardAt(i).getNumber();
         }
         //Sort the array of values to make iteration easier
-        Arrays.sort(values, Collections.reverseOrder());
+        Arrays.sort(values);
         
-        Integer counter = 1;
+        int counter = 1;
         
         //Store the greatest value, will be updated as new scores are calculated
-        Integer greatest = 0;
+        int greatest = 0;
         //For length of the list (+1 as we are checking backwards)
         for (int i = 0; i < values.length+1; i++){
             //If its the first iteration (e.g. if there is no i-1), skip this iteration
