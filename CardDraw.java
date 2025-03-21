@@ -30,18 +30,26 @@ public class CardDraw {
                 playerHands[i].add(deck.getRandomCard());
             }
         }
-
+        int[][] scoring = new int[10][2];
         //Score every player's hand, and display the hand & the score
         for(int i = 1; i <= playerHands.length; i++){
-
+            scoring[i-1][0] = i;
             System.out.print("Player " + i + " hand: ");
             playerHands[i-1].print();
-
+            scoring[i-1][1] = scoreHand(playerHands[i-1]);
             System.out.println("Player " + i + " score: " + scoreHand(playerHands[i-1]));
+
             System.out.println();
         }
-        
-        
+        int greatest = 0;
+        int greatestPlayer = 0;
+        for(int i = 0; i < scoring.length;i++){
+            if(scoring[i][1] > greatest) {
+                greatest = scoring[i][1];
+                greatestPlayer = i+1;
+            }
+        }
+        System.out.println("The Winner is Player " + greatestPlayer + " with a score of " + greatest);
     }
     /**
      * Storage of tests for all LinkedList methods
