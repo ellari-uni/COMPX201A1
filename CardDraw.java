@@ -30,6 +30,10 @@ public class CardDraw {
                 playerHands[i].add(deck.getRandomCard());
             }
         }
+
+
+
+
         int[][] scoring = new int[10][2];
         //Score every player's hand, and display the hand & the score
         for(int i = 1; i <= playerHands.length; i++){
@@ -41,15 +45,7 @@ public class CardDraw {
 
             System.out.println();
         }
-        int greatest = 0;
-        int greatestPlayer = 0;
-        for(int i = 0; i < scoring.length;i++){
-            if(scoring[i][1] > greatest) {
-                greatest = scoring[i][1];
-                greatestPlayer = i+1;
-            }
-        }
-        System.out.println("The Winner is Player " + greatestPlayer + " with a score of " + greatest);
+                
         
     }
     /**
@@ -204,5 +200,15 @@ public class CardDraw {
         }
         score += greatest;
         return score;
+    }
+
+    private void scoreAllHands(CardLinkedList[] llA){
+        int[][] scoring = new int[10][2];
+        
+        
+        for (int i = 0; i < llA.length; i++){
+            scoring[i][0] = i;
+            scoring[i][1] = scoreHand(llA[i]);
+        }
     }
 }
