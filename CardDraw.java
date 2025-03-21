@@ -43,18 +43,24 @@ public class CardDraw {
             System.out.print("Player " + i + " hand: ");
             playerHands[i-1].print();
             System.out.println("Player " + i + " score: " + handScore);
-            
             System.out.println();
             
-            if(handScore > greatestScore) greatestScore = handScore;
+            if(handScore > greatestScore){
+
+                greatestScore = handScore;
+
+            }
         }
         
         //For every hand that matches the greatest score, print that it has won (handles case of multiple winners)
         for(int i = 0; i < playerHands.length; i++){
-            if(scoreHand(playerHands[i]) == greatestScore) System.out.println("Player " + (i+1) + " wins with a score of " + greatestScore);
-        }
-                
-        
+
+            if(scoreHand(playerHands[i]) == greatestScore){
+
+                System.out.println("Player " + (i+1) + " wins with a score of " + greatestScore);
+            
+            }
+        }       
     }
 
     /**
@@ -70,10 +76,13 @@ public class CardDraw {
         int[] values = new int[hand.getLength()];
         
         //Format all number values as an integer array - as scoring doesn't rely on suits and it makes it easier to read
-        for(int i = 0; i<values.length;i++){
+        for(int i = 0; i < values.length; i++){
+
             values[i] = hand.getCardAt(i).getNumber();
         }
+
         //Sort the array of values to make iteration easier
+        //Sorting has the added benefit of bringing all duplicates together, making scoring easier
         Arrays.sort(values);
         
         int counter = 1;
@@ -82,31 +91,38 @@ public class CardDraw {
         int greatest = 0;
         //For length of the list (+1 as we are checking backwards)
         for (int i = 0; i < values.length+1; i++){
+
             //If its the first iteration (e.g. if there is no i-1), skip this iteration
             if(i==0) continue;
+
             //If i has reached the maximum index, score (this needs to be specified due to the formatting of the if statement, i do not want to call the index when the index doesn't exist)
             if (i == values.length){
+
                 //switch case as it is nicer to read in this scenario
                 switch(counter){
+
                     case 1:
-                        //System.out.println("Adding Score 1");
-                        //score += values[i-1];
-                        if (values[i-1] > greatest) greatest = values[i-1];
+                        if (values[i-1] > greatest) {
+                            greatest = values[i-1];
+                        }
                         break;
+                    
                     case 2:
-                        //System.out.println("Adding Score 2");
-                        //score += (values[i-1] * 10);
-                        if ((values[i-1]*10) > greatest) greatest = values[i-1]*10;
+                        if ((values[i-1] * 10) > greatest) {
+                            greatest = values[i-1] * 10;
+                        }
                         break;
+                    
                     case 3:
-                        //System.out.println("Adding Score 3");
-                        //score += (values[i-1] *100);
-                        if ((values[i-1]*100) > greatest) greatest = values[i-1]*100;
+                        if ((values[i-1] * 100) > greatest) {
+                            greatest = values[i-1] * 100;
+                        }
                         break;
+                    
                     case 4:
-                        //System.out.println("Adding Score 4");
-                        //score += (values[i-1] * 1000);
-                        if ((values[i-1]*1000) > greatest) greatest = values[i-1]*1000;
+                        if ((values[i-1] * 1000) > greatest) {
+                            greatest = values[i-1] * 1000;
+                        }
                         break;
                 }
                 //Set the counter to 1 to ensure it begins iterating correctly at next iteration
@@ -114,36 +130,46 @@ public class CardDraw {
             }
             //If the previous value matches the current value, then increase this counter
             else if(values[i-1] == values[i]){
+
                 counter++;
+            
             }
             // (if the previous value doesn't match it means the total of this value has been reached)
             // (this has been guaranteed by the sort function, meaning all similar elements have been ordered)
             else{
+
                 switch(counter){
+
                     case 1:
-                        //System.out.println("Adding Score 1");
-                        //score += values[i-1];
-                        if (values[i-1] > greatest) greatest = values[i-1];
+                        if (values[i-1] > greatest) {
+                            greatest = values[i-1];
+                        }
                         break;
+
                     case 2:
-                        //System.out.println("Adding Score 2");
-                        //score += (values[i-1] * 10);
-                        if ((values[i-1]*10) > greatest) greatest = values[i-1]*10;
+                        if ((values[i-1] * 10) > greatest) {
+                            greatest = values[i-1] * 10;
+                        }
                         break;
+
                     case 3:
-                        //System.out.println("Adding Score 3");
-                        //score += (values[i-1] *100);
-                        if ((values[i-1]*100) > greatest) greatest = values[i-1]*100;
+                        if ((values[i-1] * 100) > greatest) {
+                            greatest = values[i-1] * 100;
+                        }
                         break;
+
                     case 4:
-                        //System.out.println("Adding Score 4");
-                        //score += (values[i-1] * 1000);
-                        if ((values[i-1]*1000) > greatest) greatest = values[i-1]*1000;
+                        if ((values[i-1] * 1000) > greatest) {
+                            greatest = values[i-1] * 1000;
+                        }
                         break;
+
                 }
+
                 counter = 1;
             }
         }
+        
         score += greatest;
         return score;
     }

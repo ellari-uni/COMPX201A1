@@ -44,6 +44,7 @@ public class CardLinkedList {
         Node current = head;
         
         while (current != null){
+            
             System.out.print(current.card + " -> ");
             current = current.next;
         }
@@ -69,8 +70,12 @@ public class CardLinkedList {
      * @param card card to remove
      */
     public Card remove(Card card){
-        if (!hasCard(card)) System.out.println("List does not contain this card");
+        if (!hasCard(card)) {
+
+            System.out.println("List does not contain this card");
+        }
         else{
+
             //Need current and previous so that the rest of the list doesn't get lost
             Node current = head;
             Node previous = null;
@@ -101,6 +106,7 @@ public class CardLinkedList {
      * Check whether the list is empty by comparing the head to null
      */
     public boolean isEmpty(){
+
         return head == null;
     }
 
@@ -109,6 +115,7 @@ public class CardLinkedList {
      * @return Length as an int
      */
     public int getLength(){
+
         Node current = head;
         int len = 0;
         while (current != null){
@@ -127,9 +134,15 @@ public class CardLinkedList {
     public boolean hasCard(Card card){
         Node current = head;
         while (current != null){
-            if (current.card.equals(card)) return true;
+
+            if (current.card.equals(card)){
+
+                return true;
+            }
+
             current = current.next;
         }
+
         return false;
     }
 
@@ -139,24 +152,36 @@ public class CardLinkedList {
      * @return Card at the index (null if out of bounds)
      */
     public Card getCardAt(int index){
+        
         try {
+
             //Compare to length -1 since index starts at 0 but length starts at 1
             if(index > getLength() -1) {
+
                 throw new Exception("index must be within the bounds of the list");
+
             }
             else{
+
                 //iterate until index is reached, then get given card
                 Node current = head;
-                for (int i = 0; i<=index; i++){
-                    if(i == index) return current.card;
+                for (int i = 0; i <= index; i++){
+
+                    if(i == index) {
+                        return current.card;
+                    }
+
                     current = current.next;
                 }
+
                 return null;
             }
         }
         catch (Exception ex){
+
             System.out.println(ex.getMessage());
             return null;
+            
         }
     }
 }
