@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Collections;
 public class CardDraw {
     public static void main(String[] args){        
 
@@ -30,7 +31,7 @@ public class CardDraw {
                 playerHands[i].add(deck.getRandomCard());
             }
         }
-        int[][] scoring = new int[10][2];
+        Integer[][] scoring = new Integer[10][2];
         //Score every player's hand, and display the hand & the score
         for(int i = 1; i <= playerHands.length; i++){
             scoring[i-1][0] = i;
@@ -41,8 +42,8 @@ public class CardDraw {
 
             System.out.println();
         }
-        int greatest = 0;
-        int greatestPlayer = 0;
+        Integer greatest = 0;
+        Integer greatestPlayer = 0;
         for(int i = 0; i < scoring.length;i++){
             if(scoring[i][1] > greatest) {
                 greatest = scoring[i][1];
@@ -117,23 +118,23 @@ public class CardDraw {
     /**
      * Score a given hand
      * @param hand Hand to be scored
-     * @return Score of the hand as an integer
+     * @return Score of the hand as an Integereger
      */
-    private static int scoreHand(CardLinkedList hand){
+    private static Integer scoreHand(CardLinkedList hand){
 
-        int score = 0;
+        Integer score = 0;
         
         //Variable length, to ensure possibility of larger hand sizes
-        int[] values = new int[hand.getLength()];
+        Integer[] values = new Integer[hand.getLength()];
         
-        //Format all number values as an integer array - as scoring doesn't rely on suits and it makes it easier to read
+        //Format all number values as an Integereger array - as scoring doesn't rely on suits and it makes it easier to read
         for(int i = 0; i<values.length;i++){
             values[i] = hand.getCardAt(i).getNumber();
         }
         //Sort the array of values to make iteration easier
-        Arrays.sort(values);
+        Arrays.sort(values, Collections.reverseOrder());
         
-        int counter = 1;
+        Integer counter = 1;
         
         //For length of the list (+1 as we are checking backwards)
         for (int i = 0; i < values.length+1; i++){
