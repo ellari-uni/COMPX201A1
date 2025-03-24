@@ -1,3 +1,12 @@
+/*
+ * File: CardDraw.java
+ * Description: Main executable file of the program 
+ *      Use functionality from classes to create a working game.
+ * Author: Hayden Gillanders
+ * ID Number: 1636274
+ * Date Modified: 2025-03-24
+ */
+
 import java.util.Arrays;
 
 public class CardDraw {
@@ -60,7 +69,12 @@ public class CardDraw {
                 System.out.println("Player " + (i+1) + " wins with a score of " + greatestScore);
             
             }
-        }       
+        }
+        
+        /*
+        CardLinkedList testLL = new CardLinkedList();
+        TestingMethods(testLL);
+        */
     }
 
     /**

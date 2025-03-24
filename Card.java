@@ -1,3 +1,11 @@
+/*
+ * File: Card.java
+ * Description: Create a template for card objects
+ * Author: Hayden Gillanders
+ * ID Number: 1636274
+ * Date modified: 2025-03-24
+ */
+
 public class Card {
     /**
      * Enum to avoid invalid values

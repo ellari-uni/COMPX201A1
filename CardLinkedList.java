@@ -1,3 +1,11 @@
+/*
+ * File: CardLinkedList.java
+ * Description: Create a LinkedList Data Structure, specifically for Card objects
+ * Author: Hayden Gillanders
+ * ID Number: 1636274
+ * Date Modified: 2025-03-24
+ */
+
 import java.util.Random;
 public class CardLinkedList {
     
